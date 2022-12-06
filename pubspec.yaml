@@ -22,8 +22,6 @@ dependencies:
     path: lib/business_layout
   models:
     path: lib/models
-  style_app:
-    path: lib/style_app
   get: ^4.6.5
   intl: ^0.17.0 #для перевода текста / локаль / DateFormat
   shimmer: ^2.0.0

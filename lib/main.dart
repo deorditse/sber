@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:sber/ui_layout/pages/subscription_check_page/adaptive_layout_subscription_check_page.dart';
 
-import 'package:style_app/style_app.dart';
+import 'ui_layout/style_app/theme_app/material_theme/light_custom_theme_material.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();

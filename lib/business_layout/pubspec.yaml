@@ -13,8 +13,6 @@ dependencies:
     path: ../data_layout
   models:
     path: ../models
-  style_app:
-    path: ../style_app
 
 dev_dependencies:
   flutter_test:
