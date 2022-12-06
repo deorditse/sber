@@ -1,0 +1,58 @@
+name: sber
+description: A new Flutter project.
+
+publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+
+version: 1.0.0+1
+
+environment:
+  sdk: '>=2.19.0-146.2.beta <3.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+
+  # The following adds the Cupertino Icons font to your application.
+  # Use with the CupertinoIcons class for iOS style icons.
+  cupertino_icons: ^1.0.2
+
+  #добавляю слои
+  business_layout:
+    path: lib/business_layout
+  models:
+    path: lib/models
+  style_app:
+    path: lib/style_app
+  get: ^4.6.5
+  intl: ^0.17.0 #для перевода текста / локаль / DateFormat
+  shimmer: ^2.0.0
+  flutter_svg: ^1.1.5
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+  flutter_lints: ^2.0.0
+
+
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/fonts/
+    - assets/icons/
+
+
+  fonts:
+    - family: S8Sans
+      fonts:
+        - asset: assets/fonts/AurulentSansMono-Regular.otf
+          weight: 600
+
+
+
+
+
+
+
+
