@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
+import 'package:business_layout/business_layout.dart';
 import 'package:sber/ui_layout/style_app/consts_app.dart';
 import 'package:sber/ui_layout/style_app/style_buttons.dart';
 import 'package:sber/ui_layout/style_app/text_style.dart';
@@ -43,7 +44,9 @@ class FileDownloaded extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Text(
-                            'Договор аренды',
+                            ImplementControllerSubscriptionCheckPage
+                                    .instance.document?.name ??
+                                'Документ',
                             style: myTextStyleFontS8Sans(
                               context: context,
                               textColor:

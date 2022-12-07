@@ -1,3 +1,4 @@
+import 'package:file_picker/file_picker.dart';
 import 'package:get/get.dart';
 import 'package:models/models.dart';
 
@@ -12,17 +13,46 @@ class ImplementControllerSubscriptionCheckPage extends GetxController {
     indexBodyWidgetInListBody.value = goIndexBody;
   }
 
-  bool isDocumentLoaded = false;
-  bool isSignatureUploaded = false;
+  ///документ
+  PlatformFile? document;
 
-  void uploadDocument() {
-    isDocumentLoaded = !isDocumentLoaded;
-    update();
+  Future<void> uploadDocument() async {
+    if (document != null) {
+      document = null;
+      update();
+      return;
+    } else {
+      FilePickerResult? result = await FilePicker.platform.pickFiles(
+        type: FileType.custom,
+        allowedExtensions: ['pdf'],
+      );
+
+      if (result != null) {
+        document = result.files.first;
+        update();
+      }
+    }
   }
 
-  void uploadSignature() {
-    isSignatureUploaded = !isSignatureUploaded;
-    update();
+  ///Подпись
+  PlatformFile? signature;
+
+  Future<void> uploadSignature() async {
+    if (signature != null) {
+      signature = null;
+      update();
+      return;
+    } else {
+      FilePickerResult? result = await FilePicker.platform.pickFiles(
+        type: FileType.custom,
+        allowedExtensions: ['sig'],
+      );
+
+      if (result != null) {
+        signature = result.files.first;
+        update();
+      }
+    }
   }
 
   ///проверка подписи отправка данных на сервер
@@ -46,10 +76,12 @@ class ImplementControllerSubscriptionCheckPage extends GetxController {
     responseStatus = null;
     signatureVerification = null;
     update();
-    if (isSignatureUploaded && isDocumentLoaded) {
+    if (document != null && signature != null) {
       indexBodyWidgetInListBody.value = 1;
+
+      ///ToDo: Api
     } else {
-      Get.snackbar('', 'Не все данные прикреплены');
+      Get.snackbar('', 'Не все документы прикреплены');
     }
   }
 }

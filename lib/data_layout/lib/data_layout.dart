@@ -1,7 +1,1 @@
-library data_layout;
-
-/// A Calculator.
-class Calculator {
-  /// Returns [value] plus 1.
-  int addOne(int value) => value + 1;
-}
+const String urlMainApiConst = "https://sberslovo.ru/api/docs";

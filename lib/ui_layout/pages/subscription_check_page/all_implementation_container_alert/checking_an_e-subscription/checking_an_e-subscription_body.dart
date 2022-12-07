@@ -1,3 +1,6 @@
+import 'dart:io';
+
+import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:models/models.dart';
@@ -25,22 +28,19 @@ class CheckingAnESubscriptionBody extends StatelessWidget {
               mySizedHeightBetweenContainer,
               MyListTile(
                 onTap: () {
-                  // if (!controllerSubsCheckPage.isDocumentLoaded) {
                   controllerSubsCheckPage.uploadDocument();
-                  // }
                 },
-                isUpload: controllerSubsCheckPage.isDocumentLoaded,
+                isUpload: controllerSubsCheckPage.document != null,
                 title: 'Загрузите документ',
                 number: '1',
                 subtitle: 'Загрузите документ без штампа в формате .pdf',
               ),
               MyListTile(
-                onTap: () {
-                  // if (!controllerSubsCheckPage.isSignatureUploaded) {
+                onTap: () async {
                   controllerSubsCheckPage.uploadSignature();
-                  // }
+
                 },
-                isUpload: controllerSubsCheckPage.isSignatureUploaded,
+                isUpload: controllerSubsCheckPage.signature != null,
                 title: 'Загрузите подпись',
                 number: '2',
                 subtitle: 'Файл подписи обычно имеет формат формат .sig',
@@ -57,16 +57,16 @@ class CheckingAnESubscriptionBody extends StatelessWidget {
                     _onSub();
                   },
                   customBackgroundColor:
-                      (controllerSubsCheckPage.isDocumentLoaded &&
-                              controllerSubsCheckPage.isSignatureUploaded)
+                      (controllerSubsCheckPage.document != null &&
+                              controllerSubsCheckPage.signature != null)
                           ? myColorIsActive
                           : myColorButton1,
                   child: Text(
                     'Проверить подпись',
                     style: myTextStyleFontS8Sans(
                       context: context,
-                      textColor: (controllerSubsCheckPage.isDocumentLoaded &&
-                              controllerSubsCheckPage.isSignatureUploaded)
+                      textColor: (controllerSubsCheckPage.document != null &&
+                              controllerSubsCheckPage.signature != null)
                           ? Theme.of(context).cardColor
                           : Theme.of(context).textTheme.bodyLarge!.color!,
                     ),
