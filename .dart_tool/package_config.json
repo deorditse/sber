@@ -38,6 +38,12 @@
       "languageVersion": "2.12"
     },
     {
+      "name": "crypto",
+      "rootUri": "file:///Users/dmitrijdemidov/.pub-cache/hosted/pub.dartlang.org/crypto-3.0.2",
+      "packageUri": "lib/",
+      "languageVersion": "2.14"
+    },
+    {
       "name": "cupertino_icons",
       "rootUri": "file:///Users/dmitrijdemidov/.pub-cache/hosted/pub.dartlang.org/cupertino_icons-1.0.5",
       "packageUri": "lib/",
@@ -80,16 +86,34 @@
       "languageVersion": "2.17"
     },
     {
+      "name": "freezed_annotation",
+      "rootUri": "file:///Users/dmitrijdemidov/.pub-cache/hosted/pub.dartlang.org/freezed_annotation-2.2.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.17"
+    },
+    {
       "name": "get",
       "rootUri": "file:///Users/dmitrijdemidov/.pub-cache/hosted/pub.dartlang.org/get-4.6.5",
       "packageUri": "lib/",
       "languageVersion": "2.15"
     },
     {
+      "name": "hive",
+      "rootUri": "file:///Users/dmitrijdemidov/.pub-cache/hosted/pub.dartlang.org/hive-2.2.3",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
       "name": "intl",
       "rootUri": "file:///Users/dmitrijdemidov/.pub-cache/hosted/pub.dartlang.org/intl-0.17.0",
       "packageUri": "lib/",
       "languageVersion": "2.12"
+    },
+    {
+      "name": "json_annotation",
+      "rootUri": "file:///Users/dmitrijdemidov/.pub-cache/hosted/pub.dartlang.org/json_annotation-4.7.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.17"
     },
     {
       "name": "lints",
@@ -194,6 +218,12 @@
       "languageVersion": "2.18"
     },
     {
+      "name": "typed_data",
+      "rootUri": "file:///Users/dmitrijdemidov/.pub-cache/hosted/pub.dartlang.org/typed_data-1.3.1",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
       "name": "vector_math",
       "rootUri": "file:///Users/dmitrijdemidov/.pub-cache/hosted/pub.dartlang.org/vector_math-2.1.3",
       "packageUri": "lib/",
@@ -212,7 +242,7 @@
       "languageVersion": "2.19"
     }
   ],
-  "generated": "2022-12-07T10:13:25.954928Z",
+  "generated": "2022-12-07T15:50:37.282937Z",
   "generator": "pub",
   "generatorVersion": "2.19.0-146.2.beta"
 }

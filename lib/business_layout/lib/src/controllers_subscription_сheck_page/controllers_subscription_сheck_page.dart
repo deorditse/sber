@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import 'package:models/models.dart';
 
 class ImplementControllerSubscriptionCheckPage extends GetxController {
   static final ImplementControllerSubscriptionCheckPage instance =
@@ -9,7 +10,7 @@ class ImplementControllerSubscriptionCheckPage extends GetxController {
 
   void changeIndexBodyWidgetInListBody({int goIndexBody = 0}) {
     indexBodyWidgetInListBody = goIndexBody;
-    isValidateSignature = false;
+    responseStatusAndDataSignatureVerification = {};
     update();
   }
 
@@ -26,22 +27,24 @@ class ImplementControllerSubscriptionCheckPage extends GetxController {
     update();
   }
 
-  ///отправка данных на сервер
-  Future<void> submitDocAndSignature() async {
+  ///проверка подписи отправка данных на сервер
+  //responseStatus и модель с полученными данными
+  Map<String?, SignatureVerificationModel?>
+      responseStatusAndDataSignatureVerification = {};
+
+  Future<void> sendDocumentAndSignatureForVerification() async {
     if (isSignatureUploaded && isDocumentLoaded) {
       indexBodyWidgetInListBody = 1;
       update();
 
-      await Future.delayed(Duration(seconds: 3)).then((value) {
-        isValidateSignature = true;
-        update();
-      });
+      await Future.delayed(Duration(seconds: 5)).whenComplete(
+        () {
+          // responseStatusAndDataSignatureVerification = {'200': 'test'};
+          update();
+        },
+      );
     } else {
       Get.snackbar('', 'Не все данные прикреплены');
     }
   }
-
-  ///проверка подписи
-  bool isValidateSignature = false;
-
 }

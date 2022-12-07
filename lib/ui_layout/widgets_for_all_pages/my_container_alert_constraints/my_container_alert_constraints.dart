@@ -18,6 +18,7 @@ class MyContainerAlertWidget extends StatelessWidget {
     this.minWithContainer,
     this.maxHeightContainer,
     this.minHeightContainer,
+    this.isErrorResponseStatus = false,
   }) : super(key: key);
   final VoidCallback? backCallback;
   final String title;
@@ -29,6 +30,7 @@ class MyContainerAlertWidget extends StatelessWidget {
   final double? minWithContainer;
   final double? maxHeightContainer;
   final double? minHeightContainer;
+  final bool isErrorResponseStatus;
 
   @override
   Widget build(BuildContext context) {
@@ -74,7 +76,10 @@ class MyContainerAlertWidget extends StatelessWidget {
                                 title,
                                 style: myTextStyleFontS8Sans(
                                   context: context,
-                                  fontSize: 19,
+                                  textColor: isErrorResponseStatus
+                                      ? myColorTextBlue
+                                      : null,
+                                  fontSize: isErrorResponseStatus ? 40 : 19,
                                 ),
                                 textAlign: TextAlign.center,
                               ),
@@ -95,10 +100,8 @@ class MyContainerAlertWidget extends StatelessWidget {
                             onPressed: backCallback,
                             child: Icon(
                               Icons.arrow_back_ios,
-                              color: Theme.of(context)
-                                  .textTheme
-                                  .titleSmall!
-                                  .color!,
+                              color:
+                                  Theme.of(context).textTheme.bodySmall!.color!,
                             ),
                           ),
                         ),

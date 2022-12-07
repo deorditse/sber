@@ -48,11 +48,13 @@ class CheckingAnESubscriptionBody extends StatelessWidget {
                 subtitle: 'Файл подписи обычно имеет формат формат .sig',
               ),
               mySizedHeightBetweenContainer,
+              mySizedHeightBetweenContainer,
               SizedBox(
                 width: double.infinity,
                 child: MyButton(
                   verticalPadding: 20,
-                  onTap: () => controllerSubsCheckPage.submitDocAndSignature(),
+                  onTap: () => controllerSubsCheckPage
+                      .sendDocumentAndSignatureForVerification(),
                   customBackgroundColor:
                       (controllerSubsCheckPage.isDocumentLoaded &&
                               controllerSubsCheckPage.isSignatureUploaded)
