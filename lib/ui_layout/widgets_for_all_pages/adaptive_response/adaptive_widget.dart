@@ -8,13 +8,13 @@ class AdaptiveWidget extends StatelessWidget {
   final Widget? ultraWide;
   final Widget? other;
 
- const AdaptiveWidget({
+  const AdaptiveWidget({
+    super.key,
     this.narrow,
     this.other,
     this.ultraWide,
     this.wide,
   });
-
 
   @override
   Widget build(BuildContext context) {
