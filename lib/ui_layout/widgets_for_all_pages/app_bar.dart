@@ -51,7 +51,7 @@ rightAppBar({
                   semanticsLabel: 'edit',
                   fit: BoxFit.contain,
                 ),
-                SizedBox(width: withBetweenContent),
+                SizedBox(width: myWithBetweenContent),
                 Text(
                   '12',
                   style: myTextStyleFontS8Sans(context: context),
@@ -60,7 +60,7 @@ rightAppBar({
             ),
           ),
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: withBetweenContent),
+            padding: const EdgeInsets.symmetric(horizontal: myWithBetweenContent),
             child: VerticalDivider(),
           ),
           if (!deleteFIO)
@@ -71,7 +71,7 @@ rightAppBar({
                 textColor: Theme.of(context).textTheme.bodyMedium!.color!,
               ),
             ),
-          SizedBox(width: withBetweenContent),
+          SizedBox(width: myWithBetweenContent),
           SvgPicture.asset(
             'assets/icons/user.svg',
             semanticsLabel: 'user',

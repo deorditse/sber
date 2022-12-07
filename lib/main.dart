@@ -16,16 +16,17 @@ class MyGetAppSubscription extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
-      initialRoute: AdaptiveLayoutSubscriptionCheckPage.id,
+      initialRoute: SubscriptionCheckPage.id,
       debugShowCheckedModeBanner: false,
       initialBinding: BindingSubscriptionCheckPage(),
       theme: themeLight,
-      getPages: [
-        GetPage(
-          name: AdaptiveLayoutSubscriptionCheckPage.id,
-          page: () => AdaptiveLayoutSubscriptionCheckPage(),
-        ),
-      ],
+      home: SubscriptionCheckPage(),
+      // getPages: [
+      //   GetPage(
+      //     name: SubscriptionCheckPage.id,
+      //     page: () => SubscriptionCheckPage(),
+      //   ),
+      // ],
     );
   }
 }

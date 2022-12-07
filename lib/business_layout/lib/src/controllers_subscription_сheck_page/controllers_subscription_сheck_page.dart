@@ -3,6 +3,9 @@ import 'package:get/get.dart';
 class ImplementControllerSubscriptionCheckPage extends GetxController {
   static final ImplementControllerSubscriptionCheckPage instance =
       Get.find<ImplementControllerSubscriptionCheckPage>();
+
+  int indexBodyWidgetInListBody = 0;
+
   bool isDocumentLoaded = false;
   bool isSignatureUploaded = false;
 
@@ -20,5 +23,12 @@ class ImplementControllerSubscriptionCheckPage extends GetxController {
   void uploadSignature() {
     isSignatureUploaded = !isSignatureUploaded;
     update();
+  }
+
+  void _submitDocAndSignature() {
+    if (isSignatureUploaded && isDocumentLoaded) {
+      indexBodyWidgetInListBody = 1;
+      update();
+    }
   }
 }

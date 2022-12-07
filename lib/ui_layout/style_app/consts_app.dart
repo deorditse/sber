@@ -4,7 +4,7 @@ import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 
 const SizedBox mySizedHeightBetweenContainer = SizedBox(height: 18);
-const double withBetweenContent = 10;
+const double myWithBetweenContent = 10;
 const Color myColorIsActive = Color.fromRGBO(74, 123, 247, 1);
 
 ///цвета для текста
