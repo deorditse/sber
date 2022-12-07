@@ -9,12 +9,12 @@ class AdaptiveWidget extends StatelessWidget {
   final Widget? other;
 
   const AdaptiveWidget({
-    super.key,
+    Key? key,
     this.narrow,
     this.other,
     this.ultraWide,
     this.wide,
-  });
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

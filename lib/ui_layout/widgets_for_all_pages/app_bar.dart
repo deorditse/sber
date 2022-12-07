@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
@@ -7,26 +6,23 @@ import 'package:sber/ui_layout/style_app/style_buttons.dart';
 import 'package:sber/ui_layout/style_app/text_style.dart';
 import 'package:sber/ui_layout/widgets_for_all_pages/my_container_alert_constraints/my_container_alert_constraints.dart';
 
-PreferredSize myAppBar({
+Widget myAppBar({
   required BuildContext context,
   bool deleteFIO = false,
 }) {
-  return PreferredSize(
-    preferredSize: Size.fromHeight(40.0),
-    child: Container(
-      color: Theme.of(context).cardColor,
-      child: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            logo(),
-            rightAppBar(
-              context: context,
-              deleteFIO: deleteFIO,
-            ),
-          ],
-        ),
+  return Container(
+    color: Theme.of(context).cardColor,
+    child: Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          logo(),
+          rightAppBar(
+            context: context,
+            deleteFIO: deleteFIO,
+          ),
+        ],
       ),
     ),
   );

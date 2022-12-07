@@ -43,9 +43,9 @@ class MyContainerAlertWidget extends StatelessWidget {
                     clipBehavior: Clip.none,
                     constraints: BoxConstraints(
                       maxWidth:
-                          maxWithContainer ?? constrains.constrainWidth() / 3,
+                          maxWithContainer ?? constrains.constrainWidth() / 2.7,
                       minWidth:
-                          minWithContainer ?? constrains.constrainWidth() / 5,
+                          minWithContainer ?? constrains.constrainWidth() / 3.5,
                       maxHeight: maxHeightContainer ?? constrains.maxHeight,
                       minHeight: minHeightContainer ?? constrains.minHeight,
                     ),

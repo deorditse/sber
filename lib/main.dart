@@ -1,32 +1,29 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:sber/ui_layout/pages/subscription_check_page/adaptive_layout_subscription_check_page.dart';
+import 'package:sber/ui_layout/pages/subscription_check_page/subscription_check_page.dart';
 import 'package:business_layout/business_layout.dart';
-import 'package:sber/ui_layout/pages/subscription_check_page/adaptive_layout_subscription_check_page/narrow_layout_subscription_check_page/narrow_layout_subscription_check_page.dart';
-import 'ui_layout/pages/subscription_check_page/adaptive_layout_subscription_check_page/wide_layout_subscription_check_page/wide_layout_subscription_check_page.dart';
 import 'ui_layout/style_app/theme_app/material_theme/light_custom_theme_material.dart';
 
+//flutter build web
 void main() {
-  // WidgetsFlutterBinding.ensureInitialized();
-
+  // WidgetsFlutterBinding.ensureInitialized(); //for future
   runApp(const MyGetAppSubscription());
 }
 
 class MyGetAppSubscription extends StatelessWidget {
-  const MyGetAppSubscription({super.key});
+  const MyGetAppSubscription({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
-      key: key,
       initialRoute: AdaptiveLayoutSubscriptionCheckPage.id,
       debugShowCheckedModeBanner: false,
+      initialBinding: BindingSubscriptionCheckPage(),
       theme: themeLight,
       getPages: [
         GetPage(
           name: AdaptiveLayoutSubscriptionCheckPage.id,
           page: () => AdaptiveLayoutSubscriptionCheckPage(),
-          // binding: BindingSubscriptionCheckPage(),
         ),
       ],
     );

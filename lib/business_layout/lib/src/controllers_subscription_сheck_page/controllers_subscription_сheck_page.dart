@@ -1,18 +1,24 @@
 import 'package:get/get.dart';
 
 class ImplementControllerSubscriptionCheckPage extends GetxController {
-  final ImplementControllerSubscriptionCheckPage instance =
+  static final ImplementControllerSubscriptionCheckPage instance =
       Get.find<ImplementControllerSubscriptionCheckPage>();
   bool isDocumentLoaded = false;
   bool isSignatureUploaded = false;
 
+  @override
+  void onInit() {
+    // TODO: implement onInit
+    super.onInit();
+  }
+
   void uploadDocument() {
-    isDocumentLoaded = true;
+    isDocumentLoaded = !isDocumentLoaded;
     update();
   }
 
   void uploadSignature() {
-    isSignatureUploaded = true;
+    isSignatureUploaded = !isSignatureUploaded;
     update();
   }
 }
