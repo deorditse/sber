@@ -39,8 +39,11 @@ class SubscriptionCheckPage extends StatelessWidget {
       ),
       body: GetBuilder<ImplementControllerSubscriptionCheckPage>(
         builder: (controllerSubscriptionCheckPage) {
-          return _listWithBodyContainerAlert[
-              controllerSubscriptionCheckPage.indexBodyWidgetInListBody];
+          return AnimatedContainer(
+            duration: Duration(seconds: 3),
+            child: _listWithBodyContainerAlert[
+                controllerSubscriptionCheckPage.indexBodyWidgetInListBody],
+          );
         },
       ),
     );

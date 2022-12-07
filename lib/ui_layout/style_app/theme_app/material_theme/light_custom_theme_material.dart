@@ -81,26 +81,55 @@ ThemeData themeLight = _themeLight.copyWith(
 TextTheme _textLight(TextTheme baseTextThemeLight) {
 //base - нащ базовый стиль
   return baseTextThemeLight.copyWith(
-    titleLarge: baseTextThemeLight.titleLarge?.copyWith(
-      color: _myColorText1,
-      fontSize: 16,
-      fontWeight: FontWeight.w600,
-      fontStyle: FontStyle.normal,
-      fontFamily: 'S8Sans',
+    // titleLarge: myTextStyleFontS8Sans(
+    //   context: null,
+    //   textColor: _myColorText1,
+    // ),
+    bodyLarge: myTextStyleFontS8Sans(
+      context: null,
+      textColor: _myColorText2,
     ),
-    titleMedium: baseTextThemeLight.titleMedium?.copyWith(
-      color: _myColorText2,
-      fontSize: 15,
-      fontWeight: FontWeight.w600,
-      fontStyle: FontStyle.normal,
-      fontFamily: 'S8Sans',
+    // baseTextThemeLight.titleLarge?.copyWith(
+    //   color: _myColorText1,
+    //   fontSize: 16,
+    //   fontWeight: FontWeight.w600,
+    //   fontStyle: FontStyle.normal,
+    //   fontFamily: 'S8Sans',
+    // ),
+    // titleMedium: myTextStyleFontS8Sans(
+    //   context: null,
+    //   textColor: _myColorText2,
+    // ),
+    bodyMedium: myTextStyleFontS8Sans(
+      context: null,
+      textColor: _myColorText1,
     ),
-    titleSmall: baseTextThemeLight.titleSmall?.copyWith(
-      color: _myColorText3,
-      fontSize: 14,
-      fontWeight: FontWeight.w400,
-      fontStyle: FontStyle.normal,
-      fontFamily: 'S8Sans',
+
+    // baseTextThemeLight.titleMedium?.copyWith(
+    //   color: _myColorText2,
+    //   fontSize: 15,
+    //   fontWeight: FontWeight.w600,
+    //   fontStyle: FontStyle.normal,
+    //   fontFamily: 'S8Sans',
+    // ),
+    // titleSmall: myTextStyleFontS8Sans(
+    //   context: null,
+    //   textColor: _myColorText3,
+    //   newFontWeight: FontWeight.w400,
+    // ),
+    bodySmall: myTextStyleFontS8Sans(
+      context: null,
+      textColor: _myColorText3,
+      newFontWeight: FontWeight.w400,
     ),
+
+    //
+    // baseTextThemeLight.titleSmall?.copyWith(
+    //   color: _myColorText3,
+    //   fontSize: 14,
+    //   fontWeight: FontWeight.w400,
+    //   fontStyle: FontStyle.normal,
+    //   fontFamily: 'S8Sans',
+    // ),
   );
 }

@@ -62,18 +62,19 @@ class MyListTile extends StatelessWidget {
               children: [
                 Text(
                   title,
-                  style: myTextStyleFontS8Sans(
-                    context: context,
-                    fontSize: 12,
-                  ),
+                  // style: myTextStyleFontS8Sans(
+                  //   context: context,
+                  //   fontSize: 12,
+                  // ),
                 ),
                 mySizedHeightBetweenContainer,
                 Text(
                   subtitle,
                   style: myTextStyleFontS8Sans(
-                      context: context,
-                      fontSize: 12,
-                      newFontWeight: FontWeight.w300),
+                    context: context,
+                    fontSize: 12,
+                    newFontWeight: FontWeight.w300,
+                  ),
                 ),
                 Padding(
                   padding: EdgeInsets.only(

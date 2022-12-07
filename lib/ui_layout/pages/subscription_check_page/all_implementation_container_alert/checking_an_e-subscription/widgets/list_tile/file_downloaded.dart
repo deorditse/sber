@@ -13,57 +13,63 @@ class FileDownloaded extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: () {},
-      child: Container(
-        decoration: BoxDecoration(
-          border: Border.all(
-            width: 2,
-            color: const Color.fromRGBO(38, 38, 38, 0.1),
-          ),
-          borderRadius: BorderRadius.circular(16),
-        ),
-        child: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Row(
-            children: [
-              SvgPicture.asset(
-                'assets/icons/document_done.svg',
-                semanticsLabel: 'document_done',
-                fit: BoxFit.contain,
+    return Row(
+      children: [
+        Expanded(
+          flex: 4,
+          child: GestureDetector(
+            onTap: onTap,
+            child: Container(
+              decoration: BoxDecoration(
+                border: Border.all(
+                  width: 2,
+                  color: const Color.fromRGBO(38, 38, 38, 0.1),
+                ),
+                borderRadius: BorderRadius.circular(16),
               ),
-              SizedBox(width: myWithBetweenContent),
-              Expanded(
-                flex: 3,
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Row(
                   children: [
-                    Text(
-                      'Договор аренды',
-                      style: myTextStyleFontS8Sans(
-                        context: context,
-                        textColor:
-                            Theme.of(context).textTheme.titleLarge!.color,
-                      ),
-                      overflow: TextOverflow.ellipsis,
+                    SvgPicture.asset(
+                      'assets/icons/document_done.svg',
+                      semanticsLabel: 'document_done',
+                      fit: BoxFit.contain,
                     ),
-                    Text(
-                      '24.06.2022',
-                      style: myTextStyleFontS8Sans(
-                        context: context,
-                        textColor:
-                            Theme.of(context).textTheme.titleSmall!.color,
+                    SizedBox(width: myWithBetweenContent),
+                    Expanded(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(
+                            'Договор аренды',
+                            style: myTextStyleFontS8Sans(
+                              context: context,
+                              textColor:
+                                  Theme.of(context).textTheme.titleLarge!.color,
+                            ),
+                            overflow: TextOverflow.ellipsis,
+                          ),
+                          Text(
+                            '24.06.2022',
+                            style: myTextStyleFontS8Sans(
+                              context: context,
+                              textColor:
+                                  Theme.of(context).textTheme.titleSmall!.color,
+                            ),
+                          ),
+                        ],
                       ),
                     ),
                   ],
                 ),
               ),
-              Expanded(child: SizedBox()),
-            ],
+            ),
           ),
         ),
-      ),
+        Expanded(flex: 1, child: SizedBox()),
+      ],
     );
   }
 }

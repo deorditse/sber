@@ -1,12 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:sber/ui_layout/widgets_for_all_pages/adaptive_response/adaptive_widget.dart';
-import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:sber/ui_layout/style_app/consts_app.dart';
 import 'package:sber/ui_layout/style_app/style_buttons.dart';
 import 'package:sber/ui_layout/style_app/text_style.dart';
-import 'package:sber/ui_layout/widgets_for_all_pages/app_bar.dart';
 import 'package:sber/ui_layout/widgets_for_all_pages/my_container_alert_constraints/my_container_alert_constraints.dart';
 import 'package:business_layout/business_layout.dart';
 
@@ -56,7 +52,7 @@ class CheckingAnESubscriptionBody extends StatelessWidget {
                 width: double.infinity,
                 child: MyButton(
                   verticalPadding: 20,
-                  onTap: () {},
+                  onTap: () => controllerSubsCheckPage.submitDocAndSignature(),
                   customBackgroundColor:
                       (controllerSubsCheckPage.isDocumentLoaded &&
                               controllerSubsCheckPage.isSignatureUploaded)
@@ -69,7 +65,7 @@ class CheckingAnESubscriptionBody extends StatelessWidget {
                       textColor: (controllerSubsCheckPage.isDocumentLoaded &&
                               controllerSubsCheckPage.isSignatureUploaded)
                           ? Theme.of(context).cardColor
-                          : Theme.of(context).textTheme.bodyMedium!.color!,
+                          : Theme.of(context).textTheme.bodyLarge!.color!,
                     ),
                   ),
                 ),

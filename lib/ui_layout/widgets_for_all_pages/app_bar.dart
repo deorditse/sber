@@ -54,13 +54,17 @@ rightAppBar({
                 SizedBox(width: myWithBetweenContent),
                 Text(
                   '12',
-                  style: myTextStyleFontS8Sans(context: context),
+                  style: myTextStyleFontS8Sans(
+                    context: context,
+                    textColor: Theme.of(context).textTheme.bodyLarge!.color,
+                  ),
                 ),
               ],
             ),
           ),
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: myWithBetweenContent),
+            padding:
+                const EdgeInsets.symmetric(horizontal: myWithBetweenContent),
             child: VerticalDivider(),
           ),
           if (!deleteFIO)
@@ -68,7 +72,7 @@ rightAppBar({
               'Елизавета Киселева',
               style: myTextStyleFontS8Sans(
                 context: context,
-                textColor: Theme.of(context).textTheme.bodyMedium!.color!,
+                textColor: Theme.of(context).textTheme.bodyLarge!.color!,
               ),
             ),
           SizedBox(width: myWithBetweenContent),

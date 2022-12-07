@@ -13,6 +13,7 @@ myTextStyleFontS8Sans({
               ? Theme.of(context).textTheme.titleLarge!.color
               : Get.theme.textTheme.titleLarge!.color),
       fontFamily: 'S8Sans',
+      fontStyle: FontStyle.normal,
       fontSize: fontSize ?? 12,
       fontWeight: newFontWeight ?? FontWeight.w600,
     );

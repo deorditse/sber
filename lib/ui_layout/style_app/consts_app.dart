@@ -3,7 +3,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 
-const SizedBox mySizedHeightBetweenContainer = SizedBox(height: 18);
+const SizedBox mySizedHeightBetweenContainer = SizedBox(height: 14);
 const double myWithBetweenContent = 10;
 const Color myColorIsActive = Color.fromRGBO(74, 123, 247, 1);
 

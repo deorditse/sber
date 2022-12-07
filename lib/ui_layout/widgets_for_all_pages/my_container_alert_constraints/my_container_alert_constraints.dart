@@ -34,88 +34,94 @@ class MyContainerAlertWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Center(
       child: SingleChildScrollView(
-        child: LayoutBuilder(
-          builder: (BuildContext context, BoxConstraints constrains) {
-            Widget _contentContainerWithAdaptive({double? maxWithContainer}) {
-              return Container(
-                clipBehavior: Clip.none,
-                constraints: BoxConstraints(
-                  maxWidth:
-                      maxWithContainer ?? constrains.constrainWidth() / 2.7,
-                  minWidth: minWithContainer ?? constrains.constrainWidth() / 4,
-                  maxHeight: maxHeightContainer ?? constrains.maxHeight,
-                  minHeight: minHeightContainer ?? constrains.minHeight,
-                ),
-                decoration: BoxDecoration(
-                  color: color ?? Theme.of(context).cardColor,
-                  border: Border.all(
-                    width: 1,
-                    color: Color.fromRGBO(38, 38, 38, 0.1),
-                  ),
-                  borderRadius: borderRadius != null
-                      ? BorderRadius.circular(borderRadius!)
-                      : BorderRadius.circular(isCircular ? 100 : 15),
-                ),
-                child: Stack(
+        child: Padding(
+          padding: const EdgeInsets.symmetric(vertical: 20.0),
+          child: LayoutBuilder(
+            builder: (BuildContext context, BoxConstraints constrains) {
+              Widget _contentContainerWithAdaptive({double? maxWithContainer}) {
+                return Container(
                   clipBehavior: Clip.none,
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.all(22.0),
-                      child: Column(
-                        mainAxisSize: MainAxisSize.min,
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Center(
-                            child: Text(
-                              title,
-                              style: myTextStyleFontS8Sans(
-                                context: context,
-                                fontSize: 20,
-                              ),
-                              textAlign: TextAlign.center,
-                            ),
-                          ),
-                          // mySizedHeightBetweenContainer,
-                          childBody,
-                        ],
-                      ),
+                  constraints: BoxConstraints(
+                    maxWidth:
+                        maxWithContainer ?? constrains.constrainWidth() / 2.7,
+                    minWidth:
+                        minWithContainer ?? constrains.constrainWidth() / 4,
+                    maxHeight: maxHeightContainer ?? constrains.maxHeight,
+                    minHeight: minHeightContainer ?? constrains.minHeight,
+                  ),
+                  decoration: BoxDecoration(
+                    color: color ?? Theme.of(context).cardColor,
+                    border: Border.all(
+                      width: 1,
+                      color: Color.fromRGBO(38, 38, 38, 0.1),
                     ),
-                    if (backCallback != null)
-                      Positioned(
-                        top: 18,
-                        left: -20,
-                        child: FloatingActionButton(
-                          elevation: 6,
-                          backgroundColor: Theme.of(context).cardColor,
-                          mini: true,
-                          onPressed: backCallback,
-                          child: Icon(
-                            Icons.arrow_back_ios,
-                            color:
-                                Theme.of(context).textTheme.titleSmall!.color!,
-                          ),
+                    borderRadius: borderRadius != null
+                        ? BorderRadius.circular(borderRadius!)
+                        : BorderRadius.circular(isCircular ? 100 : 15),
+                  ),
+                  child: Stack(
+                    clipBehavior: Clip.none,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.all(22.0),
+                        child: Column(
+                          mainAxisSize: MainAxisSize.min,
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Center(
+                              child: Text(
+                                title,
+                                style: myTextStyleFontS8Sans(
+                                  context: context,
+                                  fontSize: 19,
+                                ),
+                                textAlign: TextAlign.center,
+                              ),
+                            ),
+                            // mySizedHeightBetweenContainer,
+                            childBody,
+                          ],
                         ),
                       ),
-                  ],
-                ),
-              );
-            }
+                      if (backCallback != null)
+                        Positioned(
+                          top: 18,
+                          left: -20,
+                          child: FloatingActionButton(
+                            elevation: 6,
+                            backgroundColor: Theme.of(context).cardColor,
+                            mini: true,
+                            onPressed: backCallback,
+                            child: Icon(
+                              Icons.arrow_back_ios,
+                              color: Theme.of(context)
+                                  .textTheme
+                                  .titleSmall!
+                                  .color!,
+                            ),
+                          ),
+                        ),
+                    ],
+                  ),
+                );
+              }
 
-            return Stack(
-              children: [
-                Align(
-                  alignment: Alignment.center,
-                  child: AdaptiveWidget(
-                    wide: _contentContainerWithAdaptive(),
-                    narrow: _contentContainerWithAdaptive(
-                      maxWithContainer: Get.width * 0.9,
+              return Stack(
+                children: [
+                  Align(
+                    alignment: Alignment.center,
+                    child: AdaptiveWidget(
+                      wide: _contentContainerWithAdaptive(),
+                      narrow: _contentContainerWithAdaptive(
+                        maxWithContainer: Get.width * 0.9,
+                      ),
                     ),
                   ),
-                ),
-              ],
-            );
-          },
+                ],
+              );
+            },
+          ),
         ),
       ),
     );
