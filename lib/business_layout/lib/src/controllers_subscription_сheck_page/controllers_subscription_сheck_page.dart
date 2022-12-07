@@ -9,6 +9,7 @@ class ImplementControllerSubscriptionCheckPage extends GetxController {
 
   void changeIndexBodyWidgetInListBody({int goIndexBody = 0}) {
     indexBodyWidgetInListBody = goIndexBody;
+    isValidateSignature = false;
     update();
   }
 
@@ -26,12 +27,21 @@ class ImplementControllerSubscriptionCheckPage extends GetxController {
   }
 
   ///отправка данных на сервер
-  void submitDocAndSignature() {
+  Future<void> submitDocAndSignature() async {
     if (isSignatureUploaded && isDocumentLoaded) {
       indexBodyWidgetInListBody = 1;
       update();
+
+      await Future.delayed(Duration(seconds: 3)).then((value) {
+        isValidateSignature = true;
+        update();
+      });
     } else {
       Get.snackbar('', 'Не все данные прикреплены');
     }
   }
+
+  ///проверка подписи
+  bool isValidateSignature = false;
+
 }

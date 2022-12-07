@@ -26,11 +26,15 @@ class ElectronicSignatureVerificationProtocol extends StatelessWidget {
               mySizedHeightBetweenContainer,
               Container(
                 decoration: BoxDecoration(
-                  color: Color.fromRGBO(243, 255, 246, 1),
+                  color: controllerSubsCheckPage.isValidateSignature
+                      ? Color.fromRGBO(243, 255, 246, 1)
+                      : Color.fromRGBO(254, 246, 246, 1),
                   borderRadius: BorderRadius.circular(16),
                   border: Border.all(
                     width: 1,
-                    color: Color.fromRGBO(20, 143, 43, 1),
+                    color: controllerSubsCheckPage.isValidateSignature
+                        ? Color.fromRGBO(20, 143, 43, 1)
+                        : Color.fromRGBO(254, 46, 67, 1),
                   ),
                 ),
                 child: Padding(
@@ -65,7 +69,7 @@ class _MainInfoText extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    _titleAndSubscription({required title, required subtitle}) {
+    _titleAndSubscription({required String title, required String? subtitle}) {
       return Padding(
         padding: const EdgeInsets.symmetric(vertical: 4.0),
         child: Column(
@@ -76,7 +80,7 @@ class _MainInfoText extends StatelessWidget {
             Text(title),
             // mySizedHeightBetweenContainer,
             Text(
-              subtitle,
+              subtitle ?? '...',
               style: myTextStyleFontS8Sans(
                   context: context, newFontWeight: FontWeight.w400),
             ),
