@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:sber/ui_layout/pages/subscription_check_page/adaptive_layout_subscription_check_page.dart';
 
+import 'business_layout/lib/business_layout.dart';
 import 'ui_layout/style_app/theme_app/material_theme/light_custom_theme_material.dart';
 
 Future<void> main() async {
@@ -18,16 +19,12 @@ class MyGetAppSubscription extends StatelessWidget {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       theme: themeLight,
-      defaultGlobalState: false,
       initialRoute: AdaptiveLayoutSubscriptionCheckPage.id,
-      onInit: () async {
-        // ImplementAuthController.instance.initMainDataApp();
-      },
       getPages: [
         GetPage(
           name: AdaptiveLayoutSubscriptionCheckPage.id,
           page: () => AdaptiveLayoutSubscriptionCheckPage(),
-          // binding: AuthBinding(),
+          binding: BindingSubscriptionCheckPage(),
         ),
       ],
     );

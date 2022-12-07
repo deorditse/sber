@@ -9,8 +9,9 @@ import '../../style_buttons.dart';
 //for Light theme
 
 const Color _myCardColorLight = Colors.white;
-const Color _myColorTextTwoLight = Color.fromRGBO(51, 63, 72, 1);
-const Color _myColorTextThreeLight = Color.fromRGBO(133, 140, 145, 1);
+const Color _myColorText1 = Colors.black;
+const Color _myColorText2 = Color.fromRGBO(51, 63, 72, 1);
+const Color _myColorText3 = Color.fromRGBO(133, 140, 145, 1);
 
 ThemeData _themeLight = ThemeData.light();
 ThemeData themeLight = _themeLight.copyWith(
@@ -59,7 +60,7 @@ ThemeData themeLight = _themeLight.copyWith(
       // foregroundColor: const MaterialStatePropertyAll(_myCardColorLight),
       textStyle: MaterialStatePropertyAll(
         myTextStyleFontS8Sans(
-          textColor: _myCardColorLight,
+          textColor: _myColorText2,
           fontSize: 18,
           context: null,
           newFontWeight: FontWeight.w500,
@@ -81,21 +82,21 @@ TextTheme _textLight(TextTheme baseTextThemeLight) {
 //base - нащ базовый стиль
   return baseTextThemeLight.copyWith(
     titleLarge: baseTextThemeLight.titleLarge?.copyWith(
-      color: myColorTextButtonLight,
+      color: _myColorText1,
       fontSize: 16,
       fontWeight: FontWeight.w600,
       fontStyle: FontStyle.normal,
       fontFamily: 'S8Sans',
     ),
     titleMedium: baseTextThemeLight.titleMedium?.copyWith(
-      color: _myColorTextTwoLight,
+      color: _myColorText2,
       fontSize: 15,
       fontWeight: FontWeight.w600,
       fontStyle: FontStyle.normal,
       fontFamily: 'S8Sans',
     ),
     titleSmall: baseTextThemeLight.titleSmall?.copyWith(
-      color: _myColorTextThreeLight,
+      color: _myColorText3,
       fontSize: 14,
       fontWeight: FontWeight.w400,
       fontStyle: FontStyle.normal,

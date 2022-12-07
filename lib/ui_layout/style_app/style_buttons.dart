@@ -3,32 +3,41 @@ import 'package:sber/ui_layout/style_app/text_style.dart';
 
 import 'consts_app.dart';
 
-Color myColorButtonMedium = Color.fromRGBO(236, 237, 240, 1);
-Color myColorButtonLight = Color.fromRGBO(247, 247, 248, 1);
-Color myColorTextButtonLight = Color.fromRGBO(51, 63, 72, 1);
+class MyButton extends StatelessWidget {
+  const MyButton({
+    Key? key,
+    required this.child,
+    required this.onTap,
+    this.customBackgroundColor,
+    this.verticalPadding,
+    this.horizontalPadding,
+    this.customTextColor,
+    this.isCircular = false,
+  }) : super(key: key);
 
-ElevatedButton myButton({
-  required child,
-  required VoidCallback onTap,
-  Color? customBackgroundColor,
-  double? verticalPadding,
-  double? horizontalPadding,
-  Color? customTextColor,
-  bool isCircular = false,
-  required BuildContext context,
-}) {
-  return ElevatedButton(
-    style: _styleButton(
-      horizontalPadding: horizontalPadding,
-      verticalPadding: verticalPadding,
-      context: context,
-      backgroundColor: customBackgroundColor,
-      textColor: customTextColor,
-      isCircular: isCircular,
-    ),
-    onPressed: onTap,
-    child: child,
-  );
+  final Widget child;
+  final VoidCallback? onTap;
+  final Color? customBackgroundColor;
+  final double? verticalPadding;
+  final double? horizontalPadding;
+  final Color? customTextColor;
+  final bool isCircular;
+
+  @override
+  Widget build(BuildContext context) {
+    return ElevatedButton(
+      style: _styleButton(
+        horizontalPadding: horizontalPadding,
+        verticalPadding: verticalPadding,
+        context: context,
+        backgroundColor: customBackgroundColor,
+        textColor: customTextColor,
+        isCircular: isCircular,
+      ),
+      onPressed: onTap,
+      child: child,
+    );
+  }
 }
 
 ButtonStyle _styleButton({
@@ -50,12 +59,12 @@ ButtonStyle _styleButton({
     overlayColor: MaterialStatePropertyAll(myColorIsActive.withOpacity(0.1)),
 
     backgroundColor:
-        MaterialStatePropertyAll(backgroundColor ?? myColorButtonLight),
+        MaterialStatePropertyAll(backgroundColor ?? myColorButton2),
 
     // foregroundColor: const MaterialStatePropertyAll(_myCardColorLight),
     textStyle: MaterialStatePropertyAll(
       myTextStyleFontS8Sans(
-        textColor: textColor ?? myColorTextButtonLight,
+        textColor: textColor ?? Theme.of(context).textTheme.bodyMedium!.color!,
         context: context,
         newFontWeight: FontWeight.w400,
       ),

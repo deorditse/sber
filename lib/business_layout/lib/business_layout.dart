@@ -1,7 +1,2 @@
-library business_layout;
-
-/// A Calculator.
-class Calculator {
-  /// Returns [value] plus 1.
-  int addOne(int value) => value + 1;
-}
+export 'src/controllers_subscription_сheck_page/controllers_subscription_сheck_page.dart';
+export 'src/controllers_subscription_сheck_page/binding.dart';

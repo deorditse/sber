@@ -6,7 +6,13 @@ import 'package:intl/intl.dart';
 const SizedBox mySizedHeightBetweenContainer = SizedBox(height: 18);
 const double withBetweenContent = 10;
 const Color myColorIsActive = Color.fromRGBO(74, 123, 247, 1);
+
+///цвета для текста
 const Color myColorTextBlue = Color.fromRGBO(12, 50, 122, 1);
+
+///цвета для кнопок
+const Color myColorButton1 = Color.fromRGBO(236, 237, 240, 1);
+const Color myColorButton2 = Color.fromRGBO(247, 247, 248, 1);
 
 BoxDecoration myDecorationBackgroundImageContainer({
   String? imageNewPath,
