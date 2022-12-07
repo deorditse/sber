@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:models/models.dart';
 import 'package:sber/ui_layout/style_app/consts_app.dart';
 import 'package:sber/ui_layout/style_app/style_buttons.dart';
 import 'package:sber/ui_layout/style_app/text_style.dart';
@@ -15,9 +16,6 @@ class CheckingAnESubscriptionBody extends StatelessWidget {
   Widget build(BuildContext context) {
     return MyContainerAlertWidget(
       title: 'Проверка электронной подписи',
-      backCallback: () {
-        print('test');
-      },
       childBody: GetBuilder<ImplementControllerSubscriptionCheckPage>(
         builder: (controllerSubsCheckPage) {
           return Column(
@@ -53,8 +51,11 @@ class CheckingAnESubscriptionBody extends StatelessWidget {
                 width: double.infinity,
                 child: MyButton(
                   verticalPadding: 20,
-                  onTap: () => controllerSubsCheckPage
-                      .sendDocumentAndSignatureForVerification(),
+                  onTap: () {
+                    controllerSubsCheckPage
+                        .sendDocumentAndSignatureForVerification();
+                    _onSub();
+                  },
                   customBackgroundColor:
                       (controllerSubsCheckPage.isDocumentLoaded &&
                               controllerSubsCheckPage.isSignatureUploaded)
@@ -75,6 +76,26 @@ class CheckingAnESubscriptionBody extends StatelessWidget {
             ],
           );
         },
+      ),
+    );
+  }
+
+  _onSub() {
+    ///имитация ответа от сервера
+    ImplementControllerSubscriptionCheckPage.instance
+        .changeResponseStatusAndDataSignatureVerificationFORTEST(
+      newResponseStatus: '200',
+      newSignatureVerification: SignatureVerificationModel(
+        error_code: 0,
+        error_comment: 'error_comment',
+        error_details: 'error_details',
+        error_trace: 'error_trace',
+        success: false,
+        signature_time_msk: 'signature_time_msk',
+        signer_full_name: 'signer_full_name',
+        signer_inn: 'signer_inn',
+        signature_guid: 'signature_guid',
+        document_origin_guid: 'document_origin_guid',
       ),
     );
   }

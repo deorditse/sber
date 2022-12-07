@@ -6,12 +6,10 @@ class ImplementControllerSubscriptionCheckPage extends GetxController {
       Get.find<ImplementControllerSubscriptionCheckPage>();
 
   ///индекс для навигации между окнами
-  int indexBodyWidgetInListBody = 0;
+  Rx<int> indexBodyWidgetInListBody = 0.obs;
 
   void changeIndexBodyWidgetInListBody({int goIndexBody = 0}) {
-    indexBodyWidgetInListBody = goIndexBody;
-    responseStatusAndDataSignatureVerification = {};
-    update();
+    indexBodyWidgetInListBody.value = goIndexBody;
   }
 
   bool isDocumentLoaded = false;
@@ -28,21 +26,28 @@ class ImplementControllerSubscriptionCheckPage extends GetxController {
   }
 
   ///проверка подписи отправка данных на сервер
-  //responseStatus и модель с полученными данными
-  Map<String?, SignatureVerificationModel?>
-      responseStatusAndDataSignatureVerification = {};
+
+  String? responseStatus;
+  SignatureVerificationModel? signatureVerification;
+
+  //delete
+  changeResponseStatusAndDataSignatureVerificationFORTEST({
+    required String? newResponseStatus,
+    required SignatureVerificationModel? newSignatureVerification,
+  }) {
+    Future.delayed(Duration(seconds: 5)).whenComplete(() {
+      responseStatus = newResponseStatus;
+      signatureVerification = newSignatureVerification;
+      update();
+    });
+  }
 
   Future<void> sendDocumentAndSignatureForVerification() async {
+    responseStatus = null;
+    signatureVerification = null;
+    update();
     if (isSignatureUploaded && isDocumentLoaded) {
-      indexBodyWidgetInListBody = 1;
-      update();
-
-      await Future.delayed(Duration(seconds: 5)).whenComplete(
-        () {
-          // responseStatusAndDataSignatureVerification = {'200': 'test'};
-          update();
-        },
-      );
+      indexBodyWidgetInListBody.value = 1;
     } else {
       Get.snackbar('', 'Не все данные прикреплены');
     }

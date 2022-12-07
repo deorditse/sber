@@ -14,10 +14,9 @@ import 'package:business_layout/business_layout.dart';
 import 'all_implementation_container_alert/electronic_signature_verification_protocol/electronic_signature_verification_protocol.dart';
 
 List<Widget> _listWithBodyContainerAlert = [
-  /// контейнер Проверка электронной подписи
+  // контейнер Проверка электронной подписи
   const CheckingAnESubscriptionBody(),
-
-  /// Протокол проверки электронной подписи
+  // Протокол проверки электронной подписи
   const ElectronicSignatureVerificationProtocol(),
 ];
 
@@ -37,14 +36,10 @@ class SubscriptionCheckPage extends StatelessWidget {
           narrow: myAppBar(context: context, deleteFIO: true),
         ),
       ),
-      body: GetBuilder<ImplementControllerSubscriptionCheckPage>(
-        builder: (controllerSubscriptionCheckPage) {
-          return AnimatedContainer(
-            duration: Duration(seconds: 3),
-            child: _listWithBodyContainerAlert[
-                controllerSubscriptionCheckPage.indexBodyWidgetInListBody],
-          );
-        },
+      body: Obx(
+        () => _listWithBodyContainerAlert[
+            ImplementControllerSubscriptionCheckPage
+                .instance.indexBodyWidgetInListBody.value],
       ),
     );
   }

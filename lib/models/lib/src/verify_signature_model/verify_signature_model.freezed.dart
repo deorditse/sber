@@ -31,6 +31,7 @@ mixin _$SignatureVerificationModel {
   String? get signer_inn => throw _privateConstructorUsedError;
   String? get signature_guid => throw _privateConstructorUsedError;
   String? get document_origin_guid => throw _privateConstructorUsedError;
+  String? get key_guid => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -55,7 +56,8 @@ abstract class $SignatureVerificationModelCopyWith<$Res> {
       String? signer_full_name,
       String? signer_inn,
       String? signature_guid,
-      String? document_origin_guid});
+      String? document_origin_guid,
+      String? key_guid});
 }
 
 /// @nodoc
@@ -82,6 +84,7 @@ class _$SignatureVerificationModelCopyWithImpl<$Res,
     Object? signer_inn = freezed,
     Object? signature_guid = freezed,
     Object? document_origin_guid = freezed,
+    Object? key_guid = freezed,
   }) {
     return _then(_value.copyWith(
       error_code: null == error_code
@@ -124,6 +127,10 @@ class _$SignatureVerificationModelCopyWithImpl<$Res,
           ? _value.document_origin_guid
           : document_origin_guid // ignore: cast_nullable_to_non_nullable
               as String?,
+      key_guid: freezed == key_guid
+          ? _value.key_guid
+          : key_guid // ignore: cast_nullable_to_non_nullable
+              as String?,
     ) as $Val);
   }
 }
@@ -147,7 +154,8 @@ abstract class _$$_SignatureVerificationModelCopyWith<$Res>
       String? signer_full_name,
       String? signer_inn,
       String? signature_guid,
-      String? document_origin_guid});
+      String? document_origin_guid,
+      String? key_guid});
 }
 
 /// @nodoc
@@ -173,6 +181,7 @@ class __$$_SignatureVerificationModelCopyWithImpl<$Res>
     Object? signer_inn = freezed,
     Object? signature_guid = freezed,
     Object? document_origin_guid = freezed,
+    Object? key_guid = freezed,
   }) {
     return _then(_$_SignatureVerificationModel(
       error_code: null == error_code
@@ -215,6 +224,10 @@ class __$$_SignatureVerificationModelCopyWithImpl<$Res>
           ? _value.document_origin_guid
           : document_origin_guid // ignore: cast_nullable_to_non_nullable
               as String?,
+      key_guid: freezed == key_guid
+          ? _value.key_guid
+          : key_guid // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -232,7 +245,8 @@ class _$_SignatureVerificationModel implements _SignatureVerificationModel {
       this.signer_full_name,
       this.signer_inn,
       this.signature_guid,
-      this.document_origin_guid});
+      this.document_origin_guid,
+      this.key_guid});
 
   factory _$_SignatureVerificationModel.fromJson(Map<String, dynamic> json) =>
       _$$_SignatureVerificationModelFromJson(json);
@@ -259,10 +273,12 @@ class _$_SignatureVerificationModel implements _SignatureVerificationModel {
   final String? signature_guid;
   @override
   final String? document_origin_guid;
+  @override
+  final String? key_guid;
 
   @override
   String toString() {
-    return 'SignatureVerificationModel(error_code: $error_code, error_comment: $error_comment, error_details: $error_details, error_trace: $error_trace, success: $success, signature_time_msk: $signature_time_msk, signer_full_name: $signer_full_name, signer_inn: $signer_inn, signature_guid: $signature_guid, document_origin_guid: $document_origin_guid)';
+    return 'SignatureVerificationModel(error_code: $error_code, error_comment: $error_comment, error_details: $error_details, error_trace: $error_trace, success: $success, signature_time_msk: $signature_time_msk, signer_full_name: $signer_full_name, signer_inn: $signer_inn, signature_guid: $signature_guid, document_origin_guid: $document_origin_guid, key_guid: $key_guid)';
   }
 
   @override
@@ -288,7 +304,9 @@ class _$_SignatureVerificationModel implements _SignatureVerificationModel {
             (identical(other.signature_guid, signature_guid) ||
                 other.signature_guid == signature_guid) &&
             (identical(other.document_origin_guid, document_origin_guid) ||
-                other.document_origin_guid == document_origin_guid));
+                other.document_origin_guid == document_origin_guid) &&
+            (identical(other.key_guid, key_guid) ||
+                other.key_guid == key_guid));
   }
 
   @JsonKey(ignore: true)
@@ -304,7 +322,8 @@ class _$_SignatureVerificationModel implements _SignatureVerificationModel {
       signer_full_name,
       signer_inn,
       signature_guid,
-      document_origin_guid);
+      document_origin_guid,
+      key_guid);
 
   @JsonKey(ignore: true)
   @override
@@ -333,7 +352,8 @@ abstract class _SignatureVerificationModel
       final String? signer_full_name,
       final String? signer_inn,
       final String? signature_guid,
-      final String? document_origin_guid}) = _$_SignatureVerificationModel;
+      final String? document_origin_guid,
+      final String? key_guid}) = _$_SignatureVerificationModel;
 
   factory _SignatureVerificationModel.fromJson(Map<String, dynamic> json) =
       _$_SignatureVerificationModel.fromJson;
@@ -358,6 +378,8 @@ abstract class _SignatureVerificationModel
   String? get signature_guid;
   @override
   String? get document_origin_guid;
+  @override
+  String? get key_guid;
   @override
   @JsonKey(ignore: true)
   _$$_SignatureVerificationModelCopyWith<_$_SignatureVerificationModel>

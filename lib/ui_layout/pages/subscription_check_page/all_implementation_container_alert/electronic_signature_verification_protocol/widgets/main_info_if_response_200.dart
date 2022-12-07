@@ -1,11 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:models/models.dart';
 import 'package:sber/ui_layout/style_app/consts_app.dart';
-import 'package:sber/ui_layout/style_app/style_buttons.dart';
 import 'package:sber/ui_layout/style_app/text_style.dart';
-import 'package:sber/ui_layout/widgets_for_all_pages/my_container_alert_constraints/my_container_alert_constraints.dart';
 import 'package:business_layout/business_layout.dart';
 
 class MainInfoIfResponse200 extends StatelessWidget {
@@ -17,8 +14,7 @@ class MainInfoIfResponse200 extends StatelessWidget {
       child: GetBuilder<ImplementControllerSubscriptionCheckPage>(
         builder: (controllerSubsCheckPage) {
           SignatureVerificationModel? signatureVerification =
-              controllerSubsCheckPage
-                  .responseStatusAndDataSignatureVerification.values.first;
+              controllerSubsCheckPage.signatureVerification;
           if (signatureVerification != null && !signatureVerification.success) {
             return Column(
               children: [
@@ -74,27 +70,27 @@ class MainInfoIfResponse200 extends StatelessWidget {
                 mySizedHeightBetweenContainer,
                 _modelTitleAndSubscription(
                   title: 'ФИО подписанта',
-                  subtitle: 'Киселева Елизавета Андреевна',
+                  subtitle: signatureVerification?.signer_full_name,
                 ),
                 _modelTitleAndSubscription(
                   title: 'ИНН Подписанта',
-                  subtitle: '12888499200883',
+                  subtitle: signatureVerification?.signer_inn,
                 ),
                 _modelTitleAndSubscription(
                   title: 'Дата подписания',
-                  subtitle: '29 мая 2022, 15:37:41 мск',
+                  subtitle: signatureVerification?.signature_time_msk,
                 ),
                 _modelTitleAndSubscription(
                   title: 'ID Подписи',
-                  subtitle: '2ff4095d1500db80ec111d51ce373f14',
+                  subtitle: signatureVerification?.signature_guid,
                 ),
                 _modelTitleAndSubscription(
                   title: 'ID Документа',
-                  subtitle: '2ff4095d1500db80ec111d51ce373f14',
+                  subtitle: signatureVerification?.document_origin_guid,
                 ),
                 _modelTitleAndSubscription(
-                  title: 'D Ключа',
-                  subtitle: '2ff4095d1500db80ec111d51ce373f14',
+                  title: 'ID Ключа',
+                  subtitle: signatureVerification?.key_guid,
                 ),
                 mySizedHeightBetweenContainer,
                 Text(
@@ -107,9 +103,11 @@ class MainInfoIfResponse200 extends StatelessWidget {
                 ),
                 mySizedHeightBetweenContainer,
                 Text(
-                  'Киселева Елизавета Андреевна\nKiseleva.ea@phystech.edu',
+                  '${signatureVerification?.signer_full_name ?? '...'}\nKiseleva.ea@phystech.edu',
                   style: myTextStyleFontS8Sans(
-                      context: context, newFontWeight: FontWeight.w400),
+                    context: context,
+                    newFontWeight: FontWeight.w400,
+                  ),
                 ),
               ],
             );

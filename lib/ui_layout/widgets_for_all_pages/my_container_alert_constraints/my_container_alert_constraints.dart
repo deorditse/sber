@@ -71,17 +71,22 @@ class MyContainerAlertWidget extends StatelessWidget {
                           mainAxisAlignment: MainAxisAlignment.center,
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Center(
+                            Align(
+                              alignment: isErrorResponseStatus
+                                  ? Alignment.centerLeft
+                                  : Alignment.center,
                               child: Text(
                                 title,
                                 style: myTextStyleFontS8Sans(
                                   context: context,
+                                  newFontWeight: isErrorResponseStatus
+                                      ? FontWeight.w900
+                                      : null,
                                   textColor: isErrorResponseStatus
                                       ? myColorTextBlue
                                       : null,
-                                  fontSize: isErrorResponseStatus ? 40 : 19,
+                                  fontSize: isErrorResponseStatus ? 90 : 19,
                                 ),
-                                textAlign: TextAlign.center,
                               ),
                             ),
                             // mySizedHeightBetweenContainer,

@@ -13,8 +13,7 @@ class SignatureVerificationContainer extends StatelessWidget {
     return GetBuilder<ImplementControllerSubscriptionCheckPage>(
       builder: (controllerSubsCheckPage) {
         final SignatureVerificationModel? _signatureVerification =
-            controllerSubsCheckPage
-                .responseStatusAndDataSignatureVerification.values.first;
+            controllerSubsCheckPage.signatureVerification;
         return Container(
           decoration: BoxDecoration(
             color: _signatureVerification == null

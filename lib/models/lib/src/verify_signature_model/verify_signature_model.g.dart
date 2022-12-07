@@ -19,6 +19,7 @@ _$_SignatureVerificationModel _$$_SignatureVerificationModelFromJson(
       signer_inn: json['signer_inn'] as String?,
       signature_guid: json['signature_guid'] as String?,
       document_origin_guid: json['document_origin_guid'] as String?,
+      key_guid: json['key_guid'] as String?,
     );
 
 Map<String, dynamic> _$$_SignatureVerificationModelToJson(
@@ -34,4 +35,5 @@ Map<String, dynamic> _$$_SignatureVerificationModelToJson(
       'signer_inn': instance.signer_inn,
       'signature_guid': instance.signature_guid,
       'document_origin_guid': instance.document_origin_guid,
+      'key_guid': instance.key_guid,
     };

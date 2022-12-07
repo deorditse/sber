@@ -18,6 +18,7 @@ class SignatureVerificationModel with _$SignatureVerificationModel {
     String? signer_inn,
     String? signature_guid,
     String? document_origin_guid,
+    String? key_guid,
   }) = _SignatureVerificationModel;
 
   factory SignatureVerificationModel.fromJson(Map<String, Object?> json) =>
