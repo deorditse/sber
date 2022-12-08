@@ -15,17 +15,21 @@ class MyListTile extends StatelessWidget {
     required this.title,
     required this.number,
     required this.subtitle,
-    this.isUpload = false,
     required this.onTap,
+    required this.uploadFileName,
+    required this.uploadFileDateTimeCreate,
   }) : super(key: key);
+
+  final String? uploadFileName;
+  final DateTime? uploadFileDateTimeCreate;
   final VoidCallback? onTap;
   final String number;
   final String title;
-  final bool isUpload;
   final String subtitle;
 
   @override
   Widget build(BuildContext context) {
+    bool? isUpload = uploadFileName != null;
     return Padding(
       padding: EdgeInsets.only(top: mySizedHeightBetweenContainer.height!),
       child: Row(
@@ -81,7 +85,11 @@ class MyListTile extends StatelessWidget {
                     top: mySizedHeightBetweenContainer.height! / 2,
                   ),
                   child: isUpload
-                      ? FileDownloaded(onTap: onTap)
+                      ? FileDownloaded(
+                          onTap: onTap,
+                          name: uploadFileName,
+                          dateTime: uploadFileDateTimeCreate,
+                        )
                       : _fileNotLoaded(context: context, onTap: onTap),
                 ),
               ],
