@@ -1,9 +1,6 @@
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:sber/ui_layout/style_app/consts_app.dart';
 import 'package:sber/ui_layout/style_app/text_style.dart';
-import 'package:sber/ui_layout/widgets_for_all_pages/adaptive_response/adaptive_widget.dart';
 
 class MyContainerAlertWidget extends StatelessWidget {
   const MyContainerAlertWidget({
@@ -13,23 +10,17 @@ class MyContainerAlertWidget extends StatelessWidget {
     this.backCallback,
     this.borderRadius,
     this.color,
-    this.isCircular = false,
-    this.maxWithContainer,
-    this.minWithContainer,
-    this.maxHeightContainer,
-    this.minHeightContainer,
+    this.withContainer,
+    this.heightContainer,
     this.isErrorResponseStatus = false,
   }) : super(key: key);
   final VoidCallback? backCallback;
   final String title;
   final Widget childBody;
-  final bool isCircular;
   final Color? color;
   final double? borderRadius;
-  final double? maxWithContainer;
-  final double? minWithContainer;
-  final double? maxHeightContainer;
-  final double? minHeightContainer;
+  final double? withContainer;
+  final double? heightContainer;
   final bool isErrorResponseStatus;
 
   @override
@@ -39,19 +30,15 @@ class MyContainerAlertWidget extends StatelessWidget {
         clipBehavior: Clip.none,
         child: Padding(
           padding: const EdgeInsets.symmetric(vertical: 20.0),
-          child: LayoutBuilder(
-            builder: (BuildContext context, BoxConstraints constrains) {
-              Widget _contentContainerWithAdaptive({double? maxWithContainer}) {
-                return Container(
+          child: Stack(
+            clipBehavior: Clip.none,
+            children: [
+              Align(
+                alignment: Alignment.center,
+                child: Container(
                   clipBehavior: Clip.none,
-                  constraints: BoxConstraints(
-                    maxWidth:
-                        maxWithContainer ?? constrains.constrainWidth() / 2.7,
-                    minWidth:
-                        minWithContainer ?? constrains.constrainWidth() / 4,
-                    maxHeight: maxHeightContainer ?? constrains.maxHeight,
-                    minHeight: minHeightContainer ?? constrains.minHeight,
-                  ),
+                  width: withContainer ?? 400,
+                  height: heightContainer ?? null,
                   decoration: BoxDecoration(
                     color: color ?? Theme.of(context).cardColor,
                     border: Border.all(
@@ -60,7 +47,7 @@ class MyContainerAlertWidget extends StatelessWidget {
                     ),
                     borderRadius: borderRadius != null
                         ? BorderRadius.circular(borderRadius!)
-                        : BorderRadius.circular(isCircular ? 100 : 15),
+                        : BorderRadius.circular(16),
                   ),
                   child: Stack(
                     clipBehavior: Clip.none,
@@ -114,23 +101,9 @@ class MyContainerAlertWidget extends StatelessWidget {
                         ),
                     ],
                   ),
-                );
-              }
-
-              return Stack(
-                children: [
-                  Align(
-                    alignment: Alignment.center,
-                    child: AdaptiveWidget(
-                      wide: _contentContainerWithAdaptive(),
-                      narrow: _contentContainerWithAdaptive(
-                        maxWithContainer: Get.width * 0.9,
-                      ),
-                    ),
-                  ),
-                ],
-              );
-            },
+                ),
+              ),
+            ],
           ),
         ),
       ),

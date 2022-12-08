@@ -45,7 +45,7 @@ flutter:
   fonts:
     - family: S8Sans
       fonts:
-        - asset: assets/fonts/AurulentSansMono-Regular.otf
+        - asset: assets/fonts/SBSansDisplay-Regular/SBSansDisplay-Regular.ttf
           weight: 600
 
 
