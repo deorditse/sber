@@ -103,7 +103,7 @@ class MainInfoIfResponse200 extends StatelessWidget {
                 ),
                 mySizedHeightBetweenContainer,
                 Text(
-                  '${signatureVerification?.signer_full_name ?? '...'}\nKiseleva.ea@phystech.edu',
+                  signatureVerification?.signer_full_name ?? '...',
                   style: myTextStyleFontS8Sans(
                     context: context,
                     newFontWeight: FontWeight.w400,
