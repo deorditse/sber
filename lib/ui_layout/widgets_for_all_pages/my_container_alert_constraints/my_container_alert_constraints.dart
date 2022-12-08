@@ -36,6 +36,7 @@ class MyContainerAlertWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Center(
       child: SingleChildScrollView(
+        clipBehavior: Clip.none,
         child: Padding(
           padding: const EdgeInsets.symmetric(vertical: 20.0),
           child: LayoutBuilder(
@@ -99,6 +100,7 @@ class MyContainerAlertWidget extends StatelessWidget {
                           top: 18,
                           left: -20,
                           child: FloatingActionButton(
+                            clipBehavior: Clip.none,
                             elevation: 6,
                             backgroundColor: Theme.of(context).cardColor,
                             mini: true,

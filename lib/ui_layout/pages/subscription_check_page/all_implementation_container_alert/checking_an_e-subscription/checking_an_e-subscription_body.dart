@@ -59,11 +59,6 @@ class CheckingAnESubscriptionBody extends StatelessWidget {
                   onTap: () {
                     controllerSubsCheckPage
                         .sendDocumentAndSignatureForVerification();
-                    // _onSub();
-                    if (controllerSubsCheckPage.document != null &&
-                        controllerSubsCheckPage.signature != null) {
-                      verifySignatureData();
-                    }
                   },
                   customBackgroundColor:
                       (controllerSubsCheckPage.document != null &&
@@ -88,89 +83,66 @@ class CheckingAnESubscriptionBody extends StatelessWidget {
       ),
     );
   }
-
-  _onSub() {
-    ///имитация ответа от сервера
-    ImplementControllerSubscriptionCheckPage.instance
-        .changeResponseStatusAndDataSignatureVerificationFORTEST(
-      newResponseStatus: '200',
-      newSignatureVerification: SignatureVerificationModel(
-        error_code: 0,
-        error_comment: 'error_comment',
-        error_details: 'error_details',
-        error_trace: 'error_trace',
-        success: false,
-        signature_time_msk: 'signature_time_msk',
-        signer_full_name: 'signer_full_name',
-        signer_inn: 'signer_inn',
-        signature_guid: 'signature_guid',
-        document_origin_guid: 'document_origin_guid',
-      ),
-    );
-  }
 }
-
-///Роут проверяет соответствие документа (file_1) и подписи (file_2)
-Future<Map<String, SignatureVerificationModel?>?> verifySignatureData(
-    // required Uint8List file_1,
-// required Uint8List file_2,
-// required String accessToken,
-
-    ) async {
-  try {
-    Uri url = Uri.https(
-      // 'sberslovo.ru',
-      'pravolet.ru',
-      'api/docs/public/verify/signature',
-    );
-    var request = http.MultipartRequest("POST", url)
-      ..files.add(
-        http.MultipartFile.fromBytes(
-          "file_1",
-          ImplementControllerSubscriptionCheckPage.instance.document!.bytes!,
-          filename:
-              ImplementControllerSubscriptionCheckPage.instance.document!.name,
-          // contentType: MediaType('application', 'pdf'),
-          contentType: MediaType('application', 'pdf'),
-        ),
-      )
-      ..files.add(
-        http.MultipartFile.fromBytes(
-          "file_2",
-          ImplementControllerSubscriptionCheckPage.instance.signature!.bytes!,
-          filename:
-              ImplementControllerSubscriptionCheckPage.instance.signature!.name,
-          // contentType: MediaType('multipart', 'form-data'),
-        ),
-      );
-
-    http.StreamedResponse response = await request.send();
-
-    print(
-        'Response status from postAttachmentsAndGetIdImageData: ${response.statusCode}');
-    log('postAttachmentsAndGetIdImageData ${response.reasonPhrase}');
-
-    if (response.statusCode == 200) {
-      var responseData = response.reasonPhrase;
-      return {
-        '${response.statusCode}':
-            SignatureVerificationModel.fromJson(jsonDecode(responseData!))
-      };
-    } else {
-      Get.snackbar(
-        'Exception',
-        'Response status postAttachmentsAndGetIdImageData: ${response.statusCode}',
-        snackPosition: SnackPosition.TOP,
-      );
-      return {'${response.statusCode}': null};
-    }
-  } catch (error) {
-    Get.snackbar(
-      'Exception',
-      'error from postAttachmentsAndGetIdImageData:$error}',
-      snackPosition: SnackPosition.TOP,
-    );
-    print('я в ошибке from postAttachmentsAndGetIdImageData $error');
-  }
-  return null;
-}
+//
+// ///Роут проверяет соответствие документа (file_1) и подписи (file_2)
+// Future<Map<String, SignatureVerificationModel?>?> verifySignatureData(
+//     // required Uint8List file_1,
+// // required Uint8List file_2,
+// // required String accessToken,
+//
+//     ) async {
+//   try {
+//     Uri url = Uri.https('sberslovo.ru', 'api/public/verify/signature');
+//     var request = http.MultipartRequest("POST", url)
+//       ..files.add(
+//         http.MultipartFile.fromBytes(
+//           "file_1",
+//           ImplementControllerSubscriptionCheckPage.instance.document!.bytes!,
+//           filename:
+//               ImplementControllerSubscriptionCheckPage.instance.document!.name,
+//           // contentType: MediaType('application', 'pdf'),
+//         ),
+//       )
+//       ..files.add(
+//         http.MultipartFile.fromBytes(
+//           "file_2",
+//           ImplementControllerSubscriptionCheckPage.instance.signature!.bytes!,
+//           filename:
+//               ImplementControllerSubscriptionCheckPage.instance.signature!.name,
+//           // contentType: MediaType('application', 'sig'),
+//         ),
+//       );
+//
+//     http.StreamedResponse response = await request.send();
+//
+//     print(
+//         'Response status from postAttachmentsAndGetIdImageData: ${response.statusCode}');
+//     log('postAttachmentsAndGetIdImageData ${response.reasonPhrase}');
+//
+//     if (response.statusCode == 200) {
+//       var responseData = await response.stream.toBytes();
+//       log('postAttachmentsAndGetIdImageData ${String.fromCharCodes(responseData)}');
+//
+//       return {
+//         '${response.statusCode}': SignatureVerificationModel.fromJson(
+//             json.decode(String.fromCharCodes(responseData)))
+//       };
+//     } else {
+//       Get.snackbar(
+//         'Exception',
+//         'Response status postAttachmentsAndGetIdImageData: ${response.statusCode}',
+//         snackPosition: SnackPosition.TOP,
+//       );
+//       return {'${response.statusCode}': null};
+//     }
+//   } catch (error) {
+//     Get.snackbar(
+//       'Exception',
+//       'error from postAttachmentsAndGetIdImageData:$error}',
+//       snackPosition: SnackPosition.TOP,
+//     );
+//     print('я в ошибке from postAttachmentsAndGetIdImageData $error');
+//   }
+//   return null;
+// }

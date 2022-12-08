@@ -1,10 +1,14 @@
 import 'package:file_picker/file_picker.dart';
 import 'package:get/get.dart';
 import 'package:models/models.dart';
+import 'package:data_layout/data_layout.dart';
 
 class ImplementControllerSubscriptionCheckPage extends GetxController {
   static final ImplementControllerSubscriptionCheckPage instance =
       Get.find<ImplementControllerSubscriptionCheckPage>();
+
+  final ServicesSubscriptionCheckPage _services =
+      ServicesSubscriptionCheckPage();
 
   ///индекс для навигации между окнами
   Rx<int> indexBodyWidgetInListBody = 0.obs;
@@ -60,18 +64,6 @@ class ImplementControllerSubscriptionCheckPage extends GetxController {
   String? responseStatus;
   SignatureVerificationModel? signatureVerification;
 
-  //delete
-  changeResponseStatusAndDataSignatureVerificationFORTEST({
-    required String? newResponseStatus,
-    required SignatureVerificationModel? newSignatureVerification,
-  }) {
-    Future.delayed(Duration(seconds: 5)).whenComplete(() {
-      responseStatus = newResponseStatus;
-      signatureVerification = newSignatureVerification;
-      update();
-    });
-  }
-
   Future<void> sendDocumentAndSignatureForVerification() async {
     responseStatus = null;
     signatureVerification = null;
@@ -79,7 +71,23 @@ class ImplementControllerSubscriptionCheckPage extends GetxController {
     if (document != null && signature != null) {
       indexBodyWidgetInListBody.value = 1;
 
-      ///ToDo: Api
+      await _services
+          .verifySignatureData(
+        document: document!.bytes!,
+        nameDocument: document!.name,
+        signature: signature!.bytes!,
+        nameSignature: signature!.name,
+      )
+          .then((resMapStatusAndData) {
+        if (resMapStatusAndData != null) {
+          responseStatus = resMapStatusAndData.keys.first;
+          update();
+          if (resMapStatusAndData.values.first != null) {
+            signatureVerification = resMapStatusAndData.values.first;
+            update();
+          }
+        }
+      });
     } else {
       Get.snackbar('', 'Не все документы прикреплены');
     }
