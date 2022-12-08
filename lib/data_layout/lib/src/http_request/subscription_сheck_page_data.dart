@@ -36,34 +36,22 @@ class ServicesSubscriptionCheckPage {
 
       http.StreamedResponse response = await request.send();
 
-      print(
-          'Response status from postAttachmentsAndGetIdImageData: ${response.statusCode}');
-      log('postAttachmentsAndGetIdImageData ${response.reasonPhrase}');
+      log('postAttachmentsAndGetIdImageData status: ${response.statusCode} ${response.reasonPhrase}');
 
       if (response.statusCode == 200) {
-        var responseData = await response.stream.toBytes();
-        log('postAttachmentsAndGetIdImageData ${String.fromCharCodes(responseData)}');
+        String responseData = await response.stream.bytesToString();
+        print('postAttachmentsAndGetIdImageData ${responseData}');
 
         return {
-          '${response.statusCode}': SignatureVerificationModel.fromJson(
-              json.decode(String.fromCharCodes(responseData)))
+          '${response.statusCode}':
+              SignatureVerificationModel.fromJson(json.decode(responseData))
         };
       } else {
-        Get.snackbar(
-          'Exception',
-          'Response status postAttachmentsAndGetIdImageData: ${response.statusCode}',
-          snackPosition: SnackPosition.TOP,
-        );
         return {'${response.statusCode}': null};
       }
     } catch (error) {
-      Get.snackbar(
-        'Exception',
-        'error from postAttachmentsAndGetIdImageData:$error}',
-        snackPosition: SnackPosition.TOP,
-      );
-      print('я в ошибке from postAttachmentsAndGetIdImageData $error');
+      print('я в ошибке from postAttachmentsAndGetIdImageData error $error');
+      return null;
     }
-    return null;
   }
 }
